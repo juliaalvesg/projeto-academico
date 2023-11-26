@@ -3,6 +3,7 @@
 
 let nav = 0
 let clicked = null
+let subtasksCounter = 0
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : []
 
 
@@ -17,25 +18,75 @@ const weekdays = ['domingo','segunda-feira', 'terça-feira', 'quarta-feira', 'qu
 
 //funções
 
-function openModal(date){
-  clicked = date
-  const eventDay = events.find((event)=>event.date === clicked)
- 
+function openModal(date) {
+  clicked = date;
+  const eventDay = events.find((event) => event.date === clicked);
 
-  if (eventDay){
-   document.getElementById('eventText').innerText = eventDay.title
-   deleteEventModal.style.display = 'block'
+  if (eventDay) {
+    const eventText = document.getElementById('eventText');
+    eventText.innerHTML = `
+      <strong>Título:</strong> ${eventDay.title}<br>
+      <strong>Descrição:</strong> ${eventDay.description}<br>
+      <strong>Prioridade:</strong> ${eventDay.priority}<br>
+      <div class="category-card">
+        <strong>Categoria:</strong>
+        <div class="category ${eventDay.category}">${eventDay.category.toUpperCase()}</div>
+      </div>
+      <strong>Subtarefas:</strong><br>
 
+    `;
 
-  } else{
-    newEvent.style.display = 'block'
+    if (eventDay.subtasks && eventDay.subtasks.length > 0) {
+      eventDay.subtasks.forEach((subtask, index) => {
+        eventText.innerHTML += `
+          <div>
+            <input type="checkbox" id="checkboxView${index}" ${subtask.progress === 100 ? 'checked' : ''}>
+            <label for="checkboxView${index}">${subtask.subtask} (${subtask.progress}% completo)</label><br>
+            <progress value="${subtask.progress}" max="100" id="progressBarView${index}"></progress><br>
+          </div>
+        `;
+      });
+    } else {
+      eventText.innerHTML += 'Nenhuma subtarefa encontrada.<br>';
+    }
 
+    deleteEventModal.style.display = 'block';
+  } else {
+    newEvent.style.display = 'block';
   }
 
-  backDrop.style.display = 'block'
+  backDrop.style.display = 'block';
+
+  // Adicione um event listener para cada checkbox
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.addEventListener('change', () => updateProgressView(index));
+  });
 }
 
-//função load() será chamada quando a pagina carregar:
+// Adicione um ouvinte para o evento 'newEventAdded' disparado pelo CÓDIGO 1
+document.addEventListener('DOMContentLoaded', function() {
+  // Esta função será executada quando o DOM for completamente carregado
+
+  // Função para carregar os eventos
+  function loadEvents() {
+      // Obtém os eventos do localStorage
+      events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+      
+      // Chama a função load() para atualizar o calendário com os eventos
+      load();
+  }
+
+  // Chama a função para carregar os eventos inicialmente
+  loadEvents();
+
+  // Adiciona um ouvinte para o evento 'newEventAdded' disparado pelo CÓDIGO 1
+  document.addEventListener('newEventAdded', function() {
+      // Quando o evento 'newEventAdded' é ouvido, recarrega os eventos
+      loadEvents();
+  });
+});
+
 
 function load (){ 
   const date = new Date() 
@@ -111,6 +162,109 @@ function load (){
     calendar.appendChild(dayS)
   }
 }
+function addSubtask() {
+  const subtasksContainer = document.getElementById('subtasksContainer');
+  const subtaskDiv = document.createElement('div');
+  subtaskDiv.classList.add('subtask-item');
+  const subtaskInput = document.createElement('input');
+  subtaskInput.setAttribute('type', 'text');
+  subtaskInput.setAttribute('placeholder', 'Subtarefa');
+  subtaskInput.setAttribute('id', `subtask${subtasksCounter}`);
+
+  // Adicione o checkbox para controlar o progresso
+  const subtaskCheckbox = document.createElement('input');
+  subtaskCheckbox.setAttribute('type', 'checkbox');
+  subtaskCheckbox.setAttribute('id', `checkbox${subtasksCounter}`);
+  subtaskCheckbox.addEventListener('change', () => updateProgress());
+
+  const progressBar = document.createElement('progress');
+  progressBar.setAttribute('id', `progressBar${subtasksCounter}`);
+  progressBar.setAttribute('max', '100');
+  progressBar.setAttribute('value', '0');
+
+  subtaskDiv.appendChild(subtaskInput);
+  subtaskDiv.appendChild(subtaskCheckbox);
+  subtaskDiv.appendChild(progressBar);
+
+  subtasksContainer.appendChild(subtaskDiv);
+
+  subtasksCounter++;
+}
+function updateProgressView(index) {
+  const checkbox = document.getElementById(`checkboxView${index}`);
+  const progressBar = document.getElementById(`progressBarView${index}`);
+
+  if (checkbox && progressBar) {
+    progressBar.value = checkbox.checked ? 100 : 0;
+
+    // Atualizar o valor no objeto de eventos
+    const eventToUpdate = events.find(event => event.date === clicked);
+    if (eventToUpdate && eventToUpdate.subtasks[index]) {
+      eventToUpdate.subtasks[index].progress = checkbox.checked ? 100 : 0;
+
+      // Salvar os eventos atualizados no localStorage
+      localStorage.setItem('events', JSON.stringify(events));
+    }
+
+    // Chame a função para atualizar o progresso geral, se necessário
+    updateOverallProgress();
+  }
+}
+
+function updateOverallProgress() {
+  let totalSubtasks = 0;
+  let completedSubtasks = 0;
+
+  for (let i = 0; i < subtasksCounter; i++) {
+    const checkbox = document.getElementById(`checkbox${i}`);
+    if (checkbox && checkbox.checked) {
+      completedSubtasks++;
+    }
+    totalSubtasks++;
+  }
+
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+    if (event.date === clicked) {
+      const subtasks = event.subtasks || [];
+      for (let j = 0; j < subtasks.length; j++) {
+        const checkbox = document.getElementById(`checkboxView${j}`);
+        if (checkbox && checkbox.checked) {
+          completedSubtasks++;
+        }
+        totalSubtasks++;
+      }
+      break;
+    }
+  }
+
+  const overallProgress = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  // Salve o progresso geral no localStorage ou em outro local apropriado, se necessário
+}
+
+
+function updateProgress(index) {
+  const checkbox = document.getElementById(`checkbox${index}`);
+  const progressBar = document.getElementById(`progressBar${index}`);
+  if (checkbox && progressBar) {
+    progressBar.value = checkbox.checked ? 100 : 0;
+  }
+  updateLocalStorage(index, checkbox.checked);
+  updateOverallProgress(); // Chame a função para atualizar o progresso geral
+}
+function updateLocalStorage(index, checked) {
+  const eventToUpdate = events.find(event => event.date === clicked);
+  if (eventToUpdate && eventToUpdate.subtasks[index]) {
+    eventToUpdate.subtasks[index].progress = checked ? 100 : 0;
+
+    // Encontrar e atualizar o evento modificado no array de eventos
+    const eventIndex = events.findIndex(event => event.date === clicked);
+    events[eventIndex] = eventToUpdate;
+
+    // Salvar os eventos atualizados no localStorage
+    localStorage.setItem('events', JSON.stringify(events));
+  }
+}
 
 function closeModal(){
   eventTitleInput.classList.remove('error')
@@ -121,24 +275,66 @@ function closeModal(){
   eventTitleInput.value = ''
   clicked = null
   load()
+  if (clicked) {
+    const eventToUpdate = events.find(event => event.date === clicked);
+    if (eventToUpdate) {
+      const checkboxes = document.querySelectorAll(`input[id^="checkboxView"]`);
+      checkboxes.forEach((checkbox, index) => {
+        const progressBar = document.getElementById(`progressBarView${index}`);
+        eventToUpdate.subtasks[index].progress = checkbox.checked ? 100 : 0;
+      });
+      
+      // Atualize o evento modificado no array de eventos
+      const eventIndex = events.findIndex(event => event.date === clicked);
+      events[eventIndex] = eventToUpdate;
+      
+      // Salve os eventos atualizados no localStorage
+      localStorage.setItem('events', JSON.stringify(events));
+    }
+  }
 
 }
-function saveEvent(){
-  if(eventTitleInput.value){
-    eventTitleInput.classList.remove('error')
+function saveEvent() {
+  const eventTitle = document.getElementById('eventTitleInput').value;
+  const eventDescription = document.getElementById('eventDescriptionInput').value;
+  const eventPriority = document.getElementById('eventPriorityInput').value;
+  const eventCategory = document.getElementById('eventCategoryInput').value;
+
+  const subtasks = [];
+  for (let i = 0; i < subtasksCounter; i++) {
+    const subtask = document.getElementById(`subtask${i}`).value;
+    subtasks.push({ subtask });
+  }
+
+  if (eventTitle) {
+    eventTitleInput.classList.remove('error');
+
+    const subtasks = [];
+    for (let i = 0; i < subtasksCounter; i++) {
+      const subtask = document.getElementById(`subtask${i}`).value;
+      const checkbox = document.getElementById(`checkbox${i}`);
+      subtasks.push({
+        subtask,
+        progress: checkbox.checked ? 100 : 0, // Captura o estado do checkbox
+      });
+    }
 
     events.push({
       date: clicked,
-      title: eventTitleInput.value
-    })
+      title: eventTitle,
+      description: eventDescription,
+      priority: eventPriority,
+      category: eventCategory,
+      subtasks,
+    });
 
-    localStorage.setItem('events', JSON.stringify(events))
-    closeModal()
-
-  }else{
-    eventTitleInput.classList.add('error')
+    localStorage.setItem('events', JSON.stringify(events));
+    closeModal();
+  } else {
+    eventTitleInput.classList.add('error');
   }
 }
+
 
 function deleteEvent(){
 
@@ -155,7 +351,7 @@ function buttons (){
     load()
     
   })
-
+  document.getElementById('addSubtaskButton').addEventListener('click', addSubtask);
   document.getElementById('nextButton').addEventListener('click',()=>{
     nav++
     load()
