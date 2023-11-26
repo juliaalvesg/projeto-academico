@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Calendário</title>
+
+<body>
+
+<header>
+    <div class="cabecalho">
+        <div class="cabecalhoLeft">
+            <img src="../img/menuIcon.png" alt="menu" class="cabecalhoLeftImg">
+           <img src="../img/home.png" alt="home" class="cabecalhoLeftImg">
+        </div>
+        <img id="logo" src="../img/logo.png" alt="Logo" id="cabecalhoLeftLogo">
+        <img src="../img/people.png" alt="people" class="cabecalhoLeftImg">
+    </div>
+</header>
+
+
+<div id="separacao">
+  <div>
+      <aside>
+          <div class="conteinerAside">
+              <div class="conteinerAsideElement1">
+                  <img src="../img/calendário.png" alt="calendario" class="conteinerAsideImg">
+                  <h4>Hoje</h4>
+              </div>
+              <div class="conteinerAsideElement1">
+                  <img src="../img/projetoImg.png" alt="projeto" class="conteinerAsideImg">
+                  <h4>Projetos e tarefas</h4>
+              </div>
+              <div class="conteinerAsideElement1">
+                  <img src="../img/progressoImg.png" alt="progresso" class="conteinerAsideImg">
+                  <h4>Progressos </h4>
+              </div>
+              <div class="conteinerAsideElement1">
+                  <img src="../img/bibliotecaImg.png" alt="biblioteca" class="conteinerAsideImg">
+                  <h4>Biblioteca de resursos </h4>
+              </div>
+          </div>
+      </aside>
+  </div>
+  <div>
+
+
+  <div id="container">
+    <div id="header">
+      <div id="monthDisplay"></div>
+
+      <div>
+        <button id="backButton">Voltar</button>
+        <button id="nextButton">Próximo</button>
+      </div>
+
+    </div>
+
+    <div id="weekdays">
+      <div>Domingo</div>
+      <div>Segunda-feira</div>
+      <div>Terça-feira</div>
+      <div>Quarta-feira</div>
+      <div>Quinta-feira</div>
+      <div>Sexta-feira</div>
+      <div>Sábado</div>
+    </div>
+
+
+    <!-- div dinamic -->
+    <div id="calendar"></div>
+
+
+  </div>
+
+  <div id="newEventModal">
+    <h2>New Evente</h2>
+
+    <input id="eventTitleInput" placeholder="Event Title" />
+
+    <button id="saveButton"> Salvar</button>
+    <button id="cancelButton">Cancelar</button>
+  </div>
+
+  <div id="deleteEventModal">
+    <h2>Evento</h2>
+
+    <div id="eventText"></div><br>
+
+
+    <button id="deleteButton">Deletar</button>
+    <button id="closeButton">Fechar</button>
+  </div>
+
+  <div id="modalBackDrop"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
