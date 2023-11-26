@@ -20,6 +20,7 @@ ul {
     padding: 0;
 }
 
+
 li {
     margin-bottom: 10px;
     padding: 10px;
@@ -53,6 +54,31 @@ aside {
     width: 30vh;
     height: 90vh;   
 }
+button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff; /* Cor do texto */
+    background-color: #58BAE4; /* Cor de fundo do botão */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efeito de hover */
+  button:hover {
+    background-color: #4899b1; /* Altera a cor de fundo ao passar o mouse */
+  }
+  
+  /* Efeito de foco */
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao focar */
+  }
 
 #separacao{
     display: flex;
@@ -111,6 +137,41 @@ img {
     align-items: center;
 }
 
+/* Estilo para o modal de visualização de eventos */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 h4{
     color: #484848;
@@ -119,6 +180,43 @@ h4{
     width: 26px;
     height: 30px;
 }
+/* Seu estilo CSS */
+
+/* Estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 
 @media only screen and (max-width: 768px) {

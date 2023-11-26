@@ -24,6 +24,42 @@ html{
     
   
   }
+.subtask-item {
+  margin-bottom: 10px;
+}
+
+.subtask-item input {
+  margin-right: 10px;
+  width: 200px;
+}
+
+
+  .category-card {
+    margin-top: 10px;
+  }
+
+  .category {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .to_do {
+    background-color: #ffcccb;
+    color: #d8000c;
+  }
+
+  .doing {
+    background-color: #ffebcc;
+    color: #f57c00;
+  }
+
+  .done {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+  }
+
   
   body {
     margin: 0 auto;
