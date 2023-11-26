@@ -1,0 +1,17 @@
+{
+    "usuarios": [
+      {
+        "nome": "João",
+        "sobrenome": "Silva",
+        "email": "joao@example.com",
+        "senha": "senha123"
+      },
+      {
+        "nome": "Maria",
+        "sobrenome": "Santos",
+        "email": "maria@example.com",
+        "senha": "senha456"
+      }
+    ]
+  }
+  

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="esquerda">
+        <div class="conteiner">
+          <img src="../img/logo.png" alt="logo AcademPro" id="conteinerLogo" />
+
+          <h3 id="conteinerTitle">Crie sua conta</h3>
+          <h4 id="conteinerMessenger">
+            Se cadastre para ter acesso a sua nova <br />
+            rotina e organização de vida.
+          </h4>
+          <form class="FormSignUp">
+            <div class="inputComIcone">
+              <input type="text" class="textBox" placeholder="Nome" required />
+              <!-- Alteração: Adição do ícone para o campo de email -->
+              <span class="emailIcon"></span>
+            </div>
+            <div class="inputComIcone">
+              <input
+                type="text"
+                class="textBox"
+                placeholder="Sobrenome"
+                required
+              />
+              <!-- Alteração: Adição do ícone para o campo de email -->
+              <span class="emailIcon"></span>
+            </div>
+            <div class="inputComIcone">
+              <input
+                type="email"
+                class="textBox"
+                placeholder="Email"
+                required
+              />
+              <!-- Alteração: Adição do ícone para o campo de email -->
+              <span class="emailIcon"></span>
+            </div>
+            <div class="inputComIcone">
+              <input
+                type="password"
+                class="textBox"
+                placeholder="Senha"
+                required
+              />
+              <!-- Código existente para o campo de senha -->
+              <span class="senhaIcon"></span>
+            </div>
+          </form>
+          <button class="btn" type="submit" value="Cadastrar">
+            Criar conta
+          </button>
+        </div>
+      </div>
+
+      <div class="direita">
+        <img src="../img/IMG.png" alt="BG Mobile" class="img-BG" />
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

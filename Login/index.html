@@ -1,64 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="main">
+      <div class="esquerda">
+        <div class="conteiner">
+          <img src="../img/logo.png" alt="logo AcademPro" id="conteinerLogo" />
 
-        <div class="esquerda">
-            <div class="conteiner">
-                <img src="../img/logo.png" alt="logo AcademPro" id="conteinerLogo">
-
-                <h3 id="conteinerTitle">Faça login</h3>
-                <h4 id="conteinerMessenger">Agora vai! Organize sua vida, seu projeto e se concentre no progresso.</h4>
-                <div class="inputIcone">
-                    <div class="inputComIcone">
-                        <input type="email" class="textBox" placeholder="            Email">
-                        <!-- Alteração: Adição do ícone para o campo de email -->
-                        <span class="emailIcon"></span>
-                    </div>
-                    <div class="inputComIcone">
-                        <input type="password" class="textBox" placeholder="            Senha">
-                        <!-- Código existente para o campo de senha -->
-                        <span class="senhaIcon"></span>
-                    </div>
-                </div>
-                <div class="conteinerChangeAccount">
-                    <div>
-                        <input type="checkbox" class="conteinerCheckbox">
-                        <label class="checkbox-label">Lembrar de mim</label>
-                    </div>
-                    <h4 class="conteinerEsqueceuSenha">Esqueceu a senha?</h4>
-                </div>
-                <button class="btn">Entrar</button>
-                <h4 id="conteinerNoAccount">Não tem conta? <a href="www.google.com.br">Criar Conta</a></h4>
+          <h3 id="conteinerTitle">Faça login</h3>
+          <h4 id="conteinerMessenger">
+            Agora vai! Organize sua vida, seu projeto e se <br/> 
+            concentre no progresso.
+          </h4>
+          <div class="inputIcone">
+            <div class="inputComIcone">
+              <input type="email" class="textBox" placeholder="Email" />
+              <!-- Alteração: Adição do ícone para o campo de email -->
+              <span class="emailIcon"></span>
             </div>
+            <div class="inputComIcone">
+              <input type="password" class="textBox" placeholder="Senha" />
+              <!-- Código existente para o campo de senha -->
+              <span class="senhaIcon"></span>
+            </div>
+          </div>
+          <div class="conteinerChangeAccount">
+            <div class="remember">
+              <input type="checkbox" class="conteinerCheckbox" />
+              <label class="checkbox-label">Lembrar de mim</label>
+            </div>
+            <a id="ForgetPassword">Esqueceu a senha?</a>
+          </div>
+          <button class="btn" href="">Entrar</button>
+          <h4 id="conteinerNoAccount">
+            Não tem conta? <a href="../SignUp/index.html">Criar Conta</a>
+          </h4>
         </div>
+      </div>
 
-        <div class="direita">
-           
-                <div class="circleBlueDark">
-                    <div class="circleBlueLight">
-                        <div class="Circlerectangle">
-                            <img src="../img/ICON.png" alt="" id="iconCheck">
-                            <img src="../img/Card1.png" alt="">
-                            <img src="../img/Card2.png" alt="">
-                            <img src="../img/Card3.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                
-        </div>
+      <div class="direita">
+        <img src="../img/IMG.png" alt="BG Mobile" class="img-BG" />
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
