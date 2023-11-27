@@ -1,13 +1,103 @@
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+    font-family: "SF Pro Display", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.button-new {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #58BAE4; /* Cor de fundo */
+    transition: background-color 0.3s ease;
+  }
+  .icone {
+    margin-right: 15px;
+  }
+  .info{
+    font-weight: bold;
+  }
+  
+  /* Efeito ao passar o mouse */
+  .button-new:hover {
+    background-color: #58BAE4; /* Cor de fundo alterada */
+  }
+.events-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    height: 100%;
 }
 
+/* Estilo para o cartão de evento */
+.event-card {
+    width: calc(33.33% - 20px); /* 3 em cada linha */
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+/* Estilo para os botões */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: row; /* Garante que os botões sejam exibidos um ao lado do outro */
+    margin-top: 35px; /* Define uma margem entre os botões (altere conforme necessário) */
+}
+div.display-row.btn-group{
+    margin-top: 20px;
+}
+div.display-row.btn-group button{
+    margin-right: 10px;
+    font-size: 15px;
+}
+#events {
+    display: flex; /* Define o contêiner pai como um flex container */
+    flex-wrap: wrap; /* Quebra os botões para a linha seguinte se não couberem no espaço disponível */
+}
+  
+  .btn {
+    margin-right: 5px; /* Define uma margem entre os botões (altere conforme necessário) */
+  }
+
+  
+
+/* Estilo para os botões de ação */
+.btn-view,
+.btn-edit,
+.btn-delete {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Estilo para os botões de ação quando hover */
+.btn-view:hover,
+.btn-edit:hover,
+.btn-delete:hover {
+    background-color: #ddd;
+}
+  
+
 #eventList {
-  margin: auto;
-  margin-left: 140px;
+    margin: auto;
+    width: 100%;
 }
 
 h1 {
@@ -190,74 +280,118 @@ h4 {
 /* Seu estilo CSS */
 
 /* Estilos do modal */
+
+
+/* Estilos para o modal de edição */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.MenuHeaderIMG {
-  margin-right: var(--margin-right);
-}
-
-.Logo_Middle {
-  width: 150px;
-}
-
-.ImgCabecalho_Right {
-  margin-right: 15px;
-}
-
-.cabecalhoLeft {
-  margin-left: 15px;
-}
-
-header {
-  margin: 0;
-  height: 70px;
-  width: 100%;
-  background-color: #5d94e0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para os campos e elementos dentro do modal */
+.modal-content input[type="text"],
+.modal-content select,
+.modal-content textarea {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: calc(50% - 10px); /* Definir a largura do input */
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4899b1;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-content input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+}
+.modal-content button:hover {
+    background-color: #4899b1;
+}
+
+/* Estilos para os botões e espaçamento */
+#addEditedSubtaskButton {
+    margin-bottom: 15px;
+    display: block;
+}
+#newEventDate,
+#newEventTitle,
+#eventDescriptionInput,
+#eventPriorityInput,
+#eventCategoryInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#addSubtaskButton {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#subtasksContainer {
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) {
-  #eventList {
-    max-width: 90%;
-    margin: 10px auto;
-  }
+    #eventList {
+        max-width: 90%;
+        margin: 10px auto;
+        margin-left: 3%; 
+    }
+    .event-card {
+        width: calc(50% - 20px); /* Dois cards por linha em telas maiores que 768px */
+        margin-right: 20px; /* Espaçamento entre os cards */
+}
 
-  aside {
-    display: hidden;
-  }
+
+@media screen and (min-width: 1024px) {
+    .event-card {
+        width: calc(33.33% - 20px); /* Três cards por linha em telas maiores que 1024px */
+    }
 }

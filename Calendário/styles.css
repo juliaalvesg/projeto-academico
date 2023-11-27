@@ -12,7 +12,7 @@
   --margin-right: 10px;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -95,7 +95,7 @@ button {
   margin-top: 25px;
 }
 #weekdays {
-  font-family: 'SF Pro Display', sans-serif; 
+  font-family: "SF Pro Display", sans-serif;
   width: 100%;
   display: flex;
   color: var(--color-weekdays);
@@ -130,6 +130,11 @@ button {
   background-color: var(--hover);
 }
 
+h2 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #454545;
+}
+
 h4 {
   font-family: "SF Pro Display", sans-serif;
 }
@@ -151,12 +156,11 @@ h4 {
   background-color: var(--body-color) !important;
   box-shadow: none !important;
 }
-#newEventModal,
-#deleteEventModal {
+#newEventModal {
   display: none;
   z-index: 20;
   padding: 25px;
-  background-color: var(--modal-event);
+  background-color: #fff;
   box-shadow: 0px 0px 3px black;
   border-radius: 5px;
   width: 350px;
@@ -165,15 +169,60 @@ h4 {
   position: absolute;
   font-family: "SF Pro Display", sans-serif;
 }
-#eventTitleInput {
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
+#deleteEventModal {
+  display: none;
+  z-index: 20;
+  padding: 25px;
+  background-color: #fff;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 350px;
+  top: 100px;
+  left: calc(50% - 175px);
+  position: absolute;
+  font-family: "SF Pro Display", sans-serif;
+}
+
+#eventDescriptionInput {
   margin-bottom: 25px;
-  border-radius: 3px;
+}
+
+#eventPriorityInput {
+  margin-bottom: 25px;
+}
+
+#addSubtaskButton {
+  width: 150px;
+  height: 30px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+
+  background-color: #454545;
+}
+
+#saveButton {
+  margin-left: 15px;
+}
+
+.buttons {
+  display: flex;
+}
+
+#eventCategoryInput{
+  height: 30px;
+  outline: none;
+}
+
+#eventTitleInput,
+#eventPriorityInput {
+  padding: 10px;
+  width: calc(100% - 25px);
+  margin-bottom: 25px;
   outline: none;
   border: none;
-  box-shadow: 0px 0px 3px gray;
+
+  background-color: transparent;
+  border-bottom: 1px solid black;
 }
 #eventTitleInput.error {
   border: 2px solid red;
