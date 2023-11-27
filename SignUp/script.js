@@ -1,4 +1,8 @@
-document.getElementById('FormSignUp').addEventListener('submit', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
+  // Adiciona um evento de envio ao formulário
+  var formulario = document.getElementById('FormSignUp');
+
+  formulario.addEventListener('submit', function(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
     // Obter os valores dos campos
@@ -13,17 +17,5 @@ document.getElementById('FormSignUp').addEventListener('submit', function(event)
     console.log('Email:', email);
     console.log('Senha:', senha);
 
-    // Criar um objeto JSON com os valores capturados
-    const dadosCadastro = {
-        nome: nome,
-        sobrenome: sobrenome,
-        email: email,
-        senha: senha
-      };
-  
-      // Exibir os dados no console
-      console.log('Dados do Cadastro:', dadosCadastro);
-
-    // Aqui você pode adicionar a lógica para enviar os dados a um servidor ou realizar outras operações com esses dados
-    // Por exemplo, fazer uma requisição AJAX para um servidor para salvar os dados
-  });
+})
+});
