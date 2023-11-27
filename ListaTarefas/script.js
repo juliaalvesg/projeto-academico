@@ -225,24 +225,37 @@ function displayEvents() {
 
     events.forEach((event, index) => {
         const listItem = document.createElement('li');
-        listItem.textContent = `Data: ${event.date} - Título: ${event.title}`;
+        listItem.innerHTML = `<span class="info">Data:</span> ${event.date}<br><span class="info">Título:</span> ${event.title}`;
+
+        const buttonsDiv = document.createElement('div'); // Criando a div para os botões
+        buttonsDiv.classList.add('display-row'); // Adicionando a classe display-row à div
 
         const viewButton = document.createElement('button');
-        viewButton.textContent = 'Visualizar Tarefa';
+        const viewIcon = document.createElement('i');
+        viewIcon.classList.add('fas', 'fa-eye');
+        viewButton.appendChild(viewIcon);
         viewButton.onclick = () => viewEvent(index);
-        listItem.appendChild(viewButton);
+        buttonsDiv.appendChild(viewButton);
 
         const editButton = document.createElement('button');
-        editButton.textContent = 'Editar';
+        const editIcon = document.createElement('i');
+        editIcon.classList.add('fas', 'fa-edit');
+        editButton.appendChild(editIcon);
         editButton.onclick = () => editEvent(index);
-        listItem.appendChild(editButton);
+        buttonsDiv.appendChild(editButton);
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Excluir';
+        const deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('fas', 'fa-trash');
+        deleteButton.appendChild(deleteIcon);
         deleteButton.onclick = () => deleteEvent(index);
-        listItem.appendChild(deleteButton);
+        buttonsDiv.appendChild(deleteButton);
+
+        listItem.appendChild(buttonsDiv); // Adicionando a div de botões ao item da lista
 
         eventsList.appendChild(listItem);
+        listItem.classList.add('event-card');
+        buttonsDiv.classList.add('btn-group');
     });
 }
 
@@ -298,6 +311,8 @@ function saveEditedEvent(index) {
         console.error('Índice do evento fora dos limites.');
     }
 }
+
+
 
 // Exiba os eventos ao carregar a página
 displayEvents();
