@@ -267,7 +267,6 @@ aside {
   display: flex;
   flex-direction: row;
   align-items: center;
-
   margin-top: 20px;
 }
 
@@ -282,4 +281,59 @@ h4 {
   width: 12%;
 
   margin-right: var(--margin-right);
+}
+
+@media screen and (max-width: 900px) {
+  #weekdays div {
+    font-size: 14px; /* Reduz o tamanho dos dias da semana para telas menores */
+    width: 43px;
+  }
+  /* Redimensiona os elementos .day para telas menores */
+  .day {
+    width: 60px; /* Reduz a largura dos elementos .day para telas menores */
+    height: 60px; /* Reduz a altura dos elementos .day para telas menores */
+    padding: 8px; /* Reduz o preenchimento dos elementos .day para telas menores */
+    border-radius: 12%; /* Reduz o raio da borda dos elementos .day para telas menores */
+    margin: 1.5px; /* Reduz a margem dos elementos .day para telas menores */
+  }
+
+  aside {
+    background-color: #eeeeee;
+    color: #fff;
+    padding: 10px;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .conteinerAside {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #weekdays div {
+    font-size: 14px; /* Reduz o tamanho dos dias da semana para telas menores */
+    width: 43px;
+  }
+
+  /* Redimensiona os elementos .day para telas menores */
+  .day {
+    width: 60px; /* Reduz a largura dos elementos .day para telas menores */
+    height: 60px; /* Reduz a altura dos elementos .day para telas menores */
+    padding: 8px; /* Reduz o preenchimento dos elementos .day para telas menores */
+    border-radius: 12%; /* Reduz o raio da borda dos elementos .day para telas menores */
+    margin: 1.5px; /* Reduz a margem dos elementos .day para telas menores */
+  }
+
+  /* Oculta o elemento aside em telas de telefone */
+  aside {
+    display: none;
+  }
+
+  /* Ajustes adicionais para outros elementos, se necessário */
+  .conteinerAside {
+    /* ... */
+  }
 }

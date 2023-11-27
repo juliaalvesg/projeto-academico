@@ -1,123 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Lista de Eventos</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="cabecalho">
-            <div class="cabecalhoLeft">
-                <img src="../img/menuIcon.png" alt="menu" class="cabecalhoLeftImg">
-                <img src="../img/home.png" alt="home" class="cabecalhoLeftImg">
-            </div>
-            <img id="logo" src="../img/logo.png" alt="Logo" id="cabecalhoLeftLogo">
-            <img src="../img/people.png" alt="people" class="cabecalhoLeftImg">
-        </div>
+      <div class="cabecalhoLeft">
+        <img src="../img/menuIcon.png" alt="menu" class="MenuHeaderIMG" />
+        <a href="index.html"
+          ><img src="../img/home.png" alt="home" class="HomeHeaderIMG"
+        /></a>
+      </div>
+      <img
+        src="../img/[AcademPro]WHITE_Logo.png"
+        alt="people"
+        class="Logo_Middle"
+      />
+      <img src="../img/people.png" alt="people" class="ImgCabecalho_Right" />
     </header>
 
     <div id="separacao">
-        <div>
-            <aside>
-                <div class="conteinerAside">
-                    <div class="conteinerAsideElement1">
-                        <img src="../img/calendário.png" alt="calendario" class="conteinerAsideImg">
-                        <h4>Hoje</h4>
-                    </div>
-                    <div class="conteinerAsideElement1">
-                        <img src="../img/projetoImg.png" alt="projeto" class="conteinerAsideImg">
-                        <h4>Projetos e tarefas</h4>
-                    </div>
-                    <div class="conteinerAsideElement1">
-                        <img src="../img/progressoImg.png" alt="progresso" class="conteinerAsideImg">
-                        <h4>Progressos </h4>
-                    </div>
-                    <div class="conteinerAsideElement1">
-                        <img src="../img/bibliotecaImg.png" alt="biblioteca" class="conteinerAsideImg">
-                        <h4>Biblioteca de recursos </h4>
-                    </div>
+      <div>
+        <aside>
+            <div class="conteinerAside">
+              <a href="../Calendário/index.html"><div class="conteinerAsideElement1">
+                <img src="../img/calendário.png" alt="calendario" class="conteinerAsideImg">
+                <h4>Hoje</h4>
+            </div></a>
+                <a href="../ListaTarefas/index.html"><div class="conteinerAsideElement1">
+                    <img src="../img/projetoImg.png" alt="projeto" class="conteinerAsideImg">
+                    <h4>Projetos e tarefas</h4>
                 </div>
-            </aside>
-        </div>
-        <div>
-            <div id="eventList">
-                <h1>Lista de Eventos</h1>
-                <button onclick="openAddEventModal()">Adicionar Novo Evento</button>
-                <ul id="events"></ul>
+              </a>
             </div>
+        </aside>
+      </div>
+      <div>
+        <div id="eventList">
+          <h1>Lista de Eventos</h1>
+          <button onclick="openAddEventModal()">Adicionar Novo Evento</button>
+          <ul id="events"></ul>
         </div>
+      </div>
     </div>
     <div id="addEventModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeAddEventModal()">&times;</span>
-            <h2>Adicionar Novo Evento</h2>
-            <label for="newEventDate">Data:</label>
-            <input type="text" id="newEventDate" placeholder="Insira a data"><br><br>
-            <label for="newEventTitle">Título:</label>
-            <input type="text" id="newEventTitle" placeholder="Insira o título"><br><br>
-            <textarea id="eventDescriptionInput" placeholder="Descrição do Evento"></textarea>
-            <input id="eventPriorityInput" placeholder="Prioridade" />
-            <select id="eventCategoryInput">
-                <option value="to_do">To Do</option>
-                <option value="doing">Doing</option>
-                <option value="done">Done</option>
-            </select>
-            <button id="addSubtaskButton" onclick="addSubtask()">Adicionar Subtarefa</button>
-            <div id="subtasksContainer">
-                <!-- Aqui as subtarefas serão adicionadas dinamicamente -->
-            </div>
-            <button onclick="addNewEvent()">Adicionar Evento</button>
+      <div class="modal-content">
+        <span class="close" onclick="closeAddEventModal()">&times;</span>
+        <h2>Adicionar Novo Evento</h2>
+        <label for="newEventDate">Data:</label>
+        <input
+          type="text"
+          id="newEventDate"
+          placeholder="Insira a data"
+        /><br /><br />
+        <label for="newEventTitle">Título:</label>
+        <input
+          type="text"
+          id="newEventTitle"
+          placeholder="Insira o título"
+        /><br /><br />
+        <textarea
+          id="eventDescriptionInput"
+          placeholder="Descrição do Evento"
+        ></textarea>
+        <input id="eventPriorityInput" placeholder="Prioridade" />
+        <select id="eventCategoryInput">
+          <option value="to_do">To Do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
+        </select>
+        <button id="addSubtaskButton" onclick="addSubtask()">
+          Adicionar Subtarefa
+        </button>
+        <div id="subtasksContainer">
+          <!-- Aqui as subtarefas serão adicionadas dinamicamente -->
         </div>
+        <button onclick="addNewEvent()">Adicionar Evento</button>
+      </div>
     </div>
     <!-- Modal -->
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Lista Expandida</h2>
-            <ul id="expandedEvents"></ul>
-        </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Lista Expandida</h2>
+        <ul id="expandedEvents"></ul>
+      </div>
     </div>
 
     <div id="viewEventModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeViewEventModal()">&times;</span>
-            <div id="eventDetails">
-                <!-- As informações da tarefa serão exibidas aqui -->
-            </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeViewEventModal()">&times;</span>
+        <div id="eventDetails">
+          <!-- As informações da tarefa serão exibidas aqui -->
         </div>
+      </div>
     </div>
 
     <!-- Modal de Edição -->
     <div id="editModal" class="modal">
-        <!-- Modal para editar evento -->
-        <div class="modal-content">
-            <span class="close" onclick="closeEditModal()">&times;</span>
-            <h2>Editar Evento</h2>
-            <label for="editedEventTitle">Título:</label>
-            <input type="text" id="editedEventTitle" placeholder="Novo título"><br><br>
-            <label for="editedEventDescription">Descrição:</label>
-            <textarea id="editedEventDescription" placeholder="Nova descrição"></textarea><br><br>
-            <label for="editedEventPriority">Prioridade:</label>
-            <input type="text" id="editedEventPriority" placeholder="Nova prioridade"><br><br>
-            <label for="editedEventCategory">Categoria:</label>
-            <select id="editedEventCategory">
-                <option value="to_do">To Do</option>
-                <option value="doing">Doing</option>
-                <option value="done">Done</option>
-            </select><br><br>
-            <button id="addEditedSubtaskButton">Adicionar Subtarefa</button>
-            <div id="subtasksContainerEdit">
-                <!-- Aqui as subtarefas serão adicionadas dinamicamente -->
-            </div>
-            <button onclick="saveEditedEvent()">Salvar</button>
+      <!-- Modal para editar evento -->
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>Editar Evento</h2>
+        <label for="editedEventTitle">Título:</label>
+        <input
+          type="text"
+          id="editedEventTitle"
+          placeholder="Novo título"
+        /><br /><br />
+        <label for="editedEventDescription">Descrição:</label>
+        <textarea
+          id="editedEventDescription"
+          placeholder="Nova descrição"
+        ></textarea
+        ><br /><br />
+        <label for="editedEventPriority">Prioridade:</label>
+        <input
+          type="text"
+          id="editedEventPriority"
+          placeholder="Nova prioridade"
+        /><br /><br />
+        <label for="editedEventCategory">Categoria:</label>
+        <select id="editedEventCategory">
+          <option value="to_do">To Do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option></select
+        ><br /><br />
+        <button id="addEditedSubtaskButton">Adicionar Subtarefa</button>
+        <div id="subtasksContainerEdit">
+          <!-- Aqui as subtarefas serão adicionadas dinamicamente -->
         </div>
+        <button onclick="saveEditedEvent()">Salvar</button>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
