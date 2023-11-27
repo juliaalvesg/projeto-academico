@@ -1,6 +1,4 @@
-
 // variaveis globais
-
 let nav = 0
 let clicked = null
 let subtasksCounter = 0
@@ -52,7 +50,8 @@ function openModal(date) {
 
     deleteEventModal.style.display = 'block';
   } else {
-    newEvent.style.display = 'block';
+    newEvent.style.display = 'flex';
+    newEvent.style.flexDirection = 'column';
   }
 
   backDrop.style.display = 'block';
