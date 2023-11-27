@@ -29,10 +29,10 @@ html {
 
 .subtask-item {
   margin-bottom: 10px;
+  display: flex;
 }
 
 .subtask-item input {
-  margin-right: 10px;
   width: 200px;
 }
 
@@ -51,7 +51,15 @@ html {
   background-color: #ffcccb;
   color: #d8000c;
 }
+.subtask-container {
+  display: flex; /* Usando flexbox para alinhar itens na mesma linha */
+  align-items: center; /* Centralizar verticalmente */
+}
 
+.subtask-item input[type="text"] {
+  /* Estilo adicional, se necessário */
+  margin-right: 5px; /* Adapte conforme desejado */
+}
 .doing {
   background-color: #ffebcc;
   color: #f57c00;
