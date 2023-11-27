@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>Calendário</title>
+</head>
 
 <body>
-
-<header>
-    <div class="cabecalho">
+  <header>
         <div class="cabecalhoLeft">
-            <img src="../img/menuIcon.png" alt="menu" class="cabecalhoLeftImg">
-           <img src="../img/home.png" alt="home" class="cabecalhoLeftImg">
+            <img src="../img/menuIcon.png" alt="menu" class="MenuHeaderIMG">
+            <a href="index.html"><img src="../img/home.png" alt="home" class="HomeHeaderIMG"></a>
         </div>
-        <img id="logo" src="../img/logo.png" alt="Logo" id="cabecalhoLeftLogo">
-        <img src="../img/people.png" alt="people" class="cabecalhoLeftImg">
-    </div>
-</header>
-
-
-<div id="separacao">
+        <img src="../img/[AcademPro]WHITE_Logo.png" alt="people" class="Logo_Middle">
+        <img src="../img/people.png" alt="people" class="ImgCabecalho_Right">
+  </header>
+  <div id="separacao">
   <div>
       <aside>
           <div class="conteinerAside">
-              <div class="conteinerAsideElement1">
-                  <img src="../img/calendário.png" alt="calendario" class="conteinerAsideImg">
-                  <h4>Hoje</h4>
-              </div>
-              <div class="conteinerAsideElement1">
+            <a href="/Calendário/index.html"><div class="conteinerAsideElement1">
+              <img src="../img/calendário.png" alt="calendario" class="conteinerAsideImg">
+              <h4>Hoje</h4>
+          </div></a>
+              <a href="/ListaTarefas/index.html"><div class="conteinerAsideElement1">
                   <img src="../img/projetoImg.png" alt="projeto" class="conteinerAsideImg">
                   <h4>Projetos e tarefas</h4>
               </div>
+            </a>
+            <a href="/ListaTarefas/index.html">
               <div class="conteinerAsideElement1">
                   <img src="../img/progressoImg.png" alt="progresso" class="conteinerAsideImg">
-                  <h4>Progressos </h4>
+                  <h4>Progressos</h4>
               </div>
-              <div class="conteinerAsideElement1">
+            </a>
+            <a href="/">
+              <div class="conteinerAsideElement1">s
                   <img src="../img/bibliotecaImg.png" alt="biblioteca" class="conteinerAsideImg">
                   <h4>Biblioteca de resursos </h4>
               </div>
+            </a>    
           </div>
       </aside>
   </div>
@@ -60,11 +60,11 @@
 
     <div id="weekdays">
       <div>Domingo</div>
-      <div>Segunda-feira</div>
-      <div>Terça-feira</div>
-      <div>Quarta-feira</div>
-      <div>Quinta-feira</div>
-      <div>Sexta-feira</div>
+      <div>Segunda</div>
+      <div>Terça</div>
+      <div>Quarta</div>
+      <div>Quinta</div>
+      <div>Sexta</div>
       <div>Sábado</div>
     </div>
 
@@ -92,7 +92,7 @@
     </div>
     <button id="saveButton">Salvar</button>
     <button id="cancelButton">Cancelar</button>
-</div>
+  </div>
 
   <div id="deleteEventModal">
     <h2>Evento</h2>
@@ -108,5 +108,4 @@
 
   <script src="script.js"></script>
 </body>
-
 </html>
